@@ -15,7 +15,7 @@ self.addLink( h1, Switch, bw=10, delay = '1ms' )
 
 ## run topo
 ```sh
-sudo mn --custom test1.py --topo MyTopo --link tc,bw=10,delay=1ms
+sudo mn --custom test1.py --topo mytopo
 
 ```
 ## use xterm
