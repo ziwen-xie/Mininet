@@ -1,7 +1,81 @@
-# MIninet command
+# MIninet Command
+## create topo
+### add host & ip
+``` python
+
+h1 = self.addHost( 'h1',ip = '10.0.0.101/8' )
+Switch = self.addSwitch( 's1' )
+
+
+```
+### add link& delay
+```python
+self.addLink( h1, Switch, bw=10, delay = '1ms' )
+```
+
+## run topo
 ```sh
 sudo mn --custom test1.py --topo MyTopo --link tc,bw=10,delay=1ms
+
 ```
+## use xterm
+```sh
+xterm h1 h2 h3 h4
+```
+
+## TCP
+### create server 
+monitor result every 1s
+```sh
+iperf -s -p 5566 
+```
+### start tcp 
+for a transmission duration of 15s
+```sh
+iperf -c 10.0.0.2 -p 5566 -t 2
+```
+## UDP
+server side
+```sh
+iperf -s -p 5003 -u
+```
+client side
+```sh
+iperf -c 10.0.0.2 -u -p 5003 -t 2
+```
+
+
+## iperf
+`-p,--port` the port for server to listen and for client to connect. default is 5201 
+UDP port: 5003
+TCP port: 5566
+`-f` format. have `k` = Kbits/sec; `K` = KBytes/s; `m` = Mbits/s, `M`= MBytes/s
+`-i` report interval
+`-F` filename
+`--logfile file`  output to log
+### server side
+`-s` server
+### client side
+`-c --client host` connect to host
+`--sctp` use SCTP
+`-u` use UDP
+`-b` set bandwidth
+`-t` transmission time
+`-n` num of buffers
+`-k` num of blocks/packets
+`-l` length
+`-4` only use ipv4
+`-6` only use ipv6
+`-S --tos n` type of service:
+1. `IPTOS_LOWDELAY`, TOS # = `0x10`
+2. `IPTOS_THROUGHPUT`, TOS# = `0x08`
+3. `IPTOS_RELIABILITY`, TOS# = `0x04`
+4. `IPTOS_LOWCOST`, TOS# = `0x02`
+
+
+
+
+
 # Docker
 ## Start a container
 ```sh
