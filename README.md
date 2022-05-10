@@ -1,4 +1,7 @@
 # MIninet Command
+
+h1 python -m http.server 80 &
+
 ## create topo
 ### add host & ip
 ``` python
