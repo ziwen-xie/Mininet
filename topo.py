@@ -11,18 +11,18 @@ class MyTopo( Topo ):
     def build( self ):
 
         # Add hosts and switches
-        h1 = self.addHost( 'h1',ip = '10.0.0.101/8' )
-        h2 = self.addHost( 'h2',ip = '10.0.0.102/8' )
-        h3 = self.addHost( 'h3' ,ip = '10.0.0.103/8')
-        h4 = self.addHost( 'h4',ip = '10.0.0.104/8' )
-        Switch = self.addSwitch( 's1' )
+        h1 = self.addHost( 'h1',ip = '128.197.128.9' )
+        h2 = self.addHost( 'h2',ip = '128.197.128.10' )
+        
+        s1 = self.addSwitch( 's1' )
+        s2 = self.addSwitch( 's2' )
         #rightSwitch = self.addSwitch( 's4' )
 
         # Add links
-        self.addLink( h1, Switch, bw=10, delay = '1ms' )
-        self.addLink( h2,Switch, bw=10, delay = '1ms' )
-        self.addLink( h3, Switch, bw=10, delay = '1ms' )
-        self.addLink( h4,Switch, bw=10, delay = '1ms' )
+        self.addLink( h1, s1, bw='1m')
+        self.addLink( s1,s2, bw='1m')
+        self.addLink( s2,h2, bw='1m')
+        
         
         #net.get('h1').setIP('')
         
