@@ -1,3 +1,7 @@
+# MIninet command
+```sh
+sudo mn --custom test1.py --topo MyTopo --link tc,bw=10,delay=1ms
+```
 # Docker
 ## Start a container
 ```sh
